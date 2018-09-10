@@ -2,12 +2,12 @@
 public class RandomWalkTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
 
 		RandomWalk simulationOne = new RandomWalk();
 		
 			simulationOne.runBug();
-			simulationOne.getTotalSteps();
+			System.out.println(simulationOne.getTotalSteps());
 			
 		
 			
@@ -15,17 +15,17 @@ public class RandomWalkTest {
 		RandomWalk simulationTwo = new RandomWalk();
 		
 			simulationTwo.runBug();
-			simulationTwo.getTotalSteps();
+			System.out.println(simulationTwo.getTotalSteps());
 		
 		RandomWalk simulationThree = new RandomWalk();
 		
 			simulationThree.runBug();
-			simulationThree.getTotalSteps();
+			System.out.println(simulationThree.getTotalSteps());
 		
 		RandomWalk simulationFour = new RandomWalk();
 		
 			simulationFour.runBug();
-			simulationFour.getTotalSteps();
+			System.out.println(simulationFour.getTotalSteps());
 	}
 
 }

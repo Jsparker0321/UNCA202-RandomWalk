@@ -9,15 +9,18 @@ public class RandomWalk {
 	private int totalSteps = 0;
 	private int row;
 	private int column;
-
 	
+	private int [] bugPosition = new int [2];
+	int counted = 1;
+	int visited = 1;
+
 	// RandomWalk constructor with two arguments representing dimensions of the room
 	public RandomWalk(int row, int column) {
 
 		board = new int[row][column];
 
-		 this.row = row;
-		 this.column = column;
+		this.row = row;
+		this.column = column;
 
 	}
 
@@ -28,31 +31,50 @@ public class RandomWalk {
 
 	}
 
-	
-
 	// Generates the next move for the bug
 	private void moveBug() {
 
-		Random gen = new Random();
-		int row = 0;
-		int column = 0;
+		boolean validbugRow = false;
+		boolean validbugColumn = false;
 		
 
-		if (board[row][column] == board[row][column]) {
-			row = gen.nextInt(3) - 1;
-			column = gen.nextInt(3) - 1;
-		} else if (board[row][column] > board.length) {
-			row = gen.nextInt(3) - 1;
-			column = gen.nextInt(3) - 1;
-		} else {
-			totalSteps++;
+		
+		
+		while (!validbugRow && !validbugColumn )  {
+			
+			Random gen = new Random();
+			
+			bugPosition[0] = gen.nextInt(3);
+			bugPosition[1] = gen.nextInt(3);
+			
+			validbugRow = checkMoveBug(bugPosition[0]);
+			validbugColumn = checkMoveBug(bugPosition[1]);
+			
+		}
+		totalSteps++;
+		
+		if(board[bugPosition[0]][bugPosition[1]] != visited) {
+			counted++;
+			board[bugPosition[0]][bugPosition[1]] = visited;
 		}
 
+		// make a while loop
 		// need to write and if to check the coordinates
 		// if coordinates are good you need to add to totalSteps
 		// if coordinates are bad you need to run generator again
 	}
 
+	private boolean checkMoveBug(int  bugPosition ) {
+		boolean check = false;
+		
+		if(bugPosition < board.length && bugPosition >= 0) {
+			check = true;
+		}
+		return check;
+	}
+	
+	
+	
 	// will keep track of totalSteps the bug moves
 	public int getTotalSteps() {
 
@@ -61,15 +83,31 @@ public class RandomWalk {
 
 	// prints out the 2d array on console
 	public void printRoom() {
-
-		System.out.println(board);
+		//nested for loop that prints out everything in the board
 		
-	}
-	
-	// Takes no parameters & runs the simulation
-		public void runBug() {
-			
-			 moveBug();
-			 printRoom();
+		
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board.length; j++) {
+		System.out.print(board[i][j]);
+			}
+		System.out.println("");
 		}
+	}
+
+	// Takes no parameters & runs the simulation
+	public void runBug() {
+		
+		
+		int totalSpaces = board.length * board[0].length;
+		bugPosition[0] = 1;
+		bugPosition[1] = 2;
+		
+		board[bugPosition[0]][bugPosition[1]] = visited;
+		
+		while (counted < totalSpaces ) {
+			moveBug();
+		}
+			
+		printRoom();
+	}
 }
