@@ -1,3 +1,9 @@
+
+//Jessica Parker
+//9-10-18
+//CSCI 202
+//Project #1: A Random Walk
+
 import java.util.Scanner;
 
 public class RandomWalkTest {
@@ -16,7 +22,7 @@ public class RandomWalkTest {
 		simulationOne.runBug();
 		System.out.println("It took " + simulationOne.getTotalSteps() + " steps to fill the grid!");
 		System.out.println("");
-		
+
 		System.out.println("Bug Map #2: ");
 		RandomWalk simulationTwo = new RandomWalk();
 		simulationTwo.runBug();
@@ -34,21 +40,20 @@ public class RandomWalkTest {
 		simulationFour.runBug();
 		System.out.println("It took " + simulationFour.getTotalSteps() + " steps to fill the grid!");
 		System.out.println("");
-		
-		
-		
+
 		System.out.print("Would you like to simulate another map? ");
 		String answer = userInput.nextLine();
-		if( answer.equals("yes")) {
+		if (answer.equals("yes")) {
+			System.out.println("");
 			System.out.println("Bug Map #5: ");
 			RandomWalk simulationFive = new RandomWalk();
 			simulationFive.runBug();
 			System.out.println("It took " + simulationFive.getTotalSteps() + " steps to fill the grid!");
 			System.out.println("");
-		}else {
+		} else {
 			System.out.println("Goodbye!");
 		}
-		
+
 	}
 
 }
